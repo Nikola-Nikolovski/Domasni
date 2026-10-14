@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Паметен дом - контролен панел</title>
+</head>
+<body>
+    <header>
+        <h1>Контролен панел за паметен дом</h1>
+        <p>Преглед на сензорите во домот</p>
+    </header>
+    <nav>
+        <a href="#spalna">Спална</a>
+        <a href="#dnevna">Дневна</a>
+        <a href="#kujna">Кујна</a>
+        <a href="#gradina">Градина</a>
+        <a href="#izvestuvanja">Известувања (6)</a>
+    </nav>
+    <main>
+        
+        <section id="spalna">
+            <h2>Спална соба</h2>
+
+            <article id="spalna-temperatura">
+                <h3>Сензор за температура</h3>
+                <p>Температура: <data value="19">19°C</data></p>
+                <p>Нормално: 20°C - 24°C</p>
+                <p>Статус: <span>Вклучен</span> | Батерија: 86%</p>
+                <p><strong>Температурата е премногу ниска!</strong></p>
+            </article>
+
+            <article id="spalna-vlaznost">
+                <h3>Сензор за влажност</h3>
+                <p>Влажност: <meter min="0" max="100" value="48">48%</meter> 48%</p>
+                <p>Нормално: 40% - 60%</p>
+                <p>Статус: <span>Вклучен</span> | Батерија: 73%</p>
+            </article>
+
+            <article id="spalna-svetlina">
+                <h3>Сензор за светлина</h3>
+                <p>Светлина: <progress value="60" max="100">60%</progress> 60%</p>
+                <p>Нормално: 20% - 80%</p>
+                <p>Статус: <span>Вклучен</span> | Батерија: 91%</p>
+            </article>
+        </section>
+
+        
+        <section id="dnevna">
+            <h2>Дневна соба</h2>
+
+            <article id="dnevna-temperatura">
+                <h3>Сензор за температура</h3>
+                <p>Температура: <output>22°C</output></p>
+                <p>Нормално: 20°C - 24°C</p>
+                <p>Статус: <span>Вклучен</span> | Батерија: 88%</p>
+            </article>
+
+            <article id="dnevna-co2">
+                <h3>Сензор за CO₂</h3>
+                <p>CO₂: <strong>1250 ppm</strong></p>
+                <p>Нормално: 400 - 1000 ppm</p>
+                <p>Статус: <span>Вклучен</span> | Батерија: 65%</p>
+                <p><strong>Нивото на CO₂ е високо!</strong></p>
+            </article>
+
+            <article id="dnevna-bucava">
+                <h3>Сензор за бучава</h3>
+                <p>Последно мерење: <span>40 dB</span></p>
+                <p>Нормално: 0 - 60 dB</p>
+                <p>Статус: <span>Исклучен</span> | Батерија: 42%</p>
+                <p><strong>Сензорот е исклучен!</strong></p>
+            </article>
+        </section>
+
+        
+        <section id="kujna">
+            <h2>Кујна</h2>
+
+            <article id="kujna-cad">
+                <h3>Сензор за чад</h3>
+                <p>Чад: <mark>15 ppm</mark></p>
+                <p>Нормално: 0 - 10 ppm</p>
+                <p>Статус: <span>Вклучен</span> | Батерија: 96%</p>
+                <p><strong>Зголемено ниво на чад!</strong></p>
+            </article>
+
+            <article id="kujna-temperatura">
+                <h3>Сензор за температура</h3>
+                <p>Температура: <em>28°C</em></p>
+                <p>Нормално: 18°C - 27°C</p>
+                <p>Статус: <span>Вклучен</span> | Батерија: 75%</p>
+                <p><strong>Температурата е висока!</strong></p>
+            </article>
+
+            <article id="kujna-gas">
+                <h3>Сензор за гас</h3>
+                <p>Гас: <b>2%</b></p>
+                <p>Нормално: 0% - 5%</p>
+                <p>Статус: <span>Вклучен</span> | Батерија: 83%</p>
+            </article>
+        </section>
+
+        
+        <section id="gradina">
+            <h2>Градина</h2>
+
+            <article id="gradina-pochva">
+                <h3>Сензор за влажност на почва</h3>
+                <p>Влажност на почва:</p>
+                <p>26%</p>
+                <p>Нормално: 30% - 70%</p>
+                <p>Статус: <span>Вклучен</span> | Батерија: 59%</p>
+                <p><strong>Почвата е сува!</strong></p>
+            </article>
+
+            <article id="gradina-temperatura">
+                <h3>Сензор за надворешна температура</h3>
+                <p>Температура: <small>18°C</small></p>
+                <p>Нормално: 10°C - 30°C</p>
+                <p>Статус: <span>Вклучен</span> | Батерија: 77%</p>
+            </article>
+
+            <article id="gradina-svetlina">
+                <h3>Сензор за осветленост</h3>
+                <p>Осветленост: <samp>780 lx</samp></p>
+                <p>Нормално: 300 - 1200 lx</p>
+                <p>Статус: <span>Вклучен</span> | Батерија: 82%</p>
+            </article>
+        </section>
+
+        
+        <section id="izvestuvanja">
+            <h2>Известувања и правила</h2>
+            <p>Вкупно 6 известувања. Кликни на насловот за да го видиш правилото.</p>
+
+            <details open>
+                <summary>Спална - ниска температура</summary>
+                <p>Правило: Ако температурата е помала од 20°C или поголема од 24°C, прикажи предупредување.</p>
+                <p>Измерена температура: 19°C. Потребно е загревање на собата.</p>
+            </details>
+
+            <details>
+                <summary>Дневна - високо ниво на CO₂</summary>
+                <p>Правило: Ако CO₂ е под 400 ppm или над 1000 ppm, прикажи предупредување.</p>
+                <p>Измерено: 1250 ppm. Проветри ја дневната соба.</p>
+            </details>
+
+            <details>
+                <summary>Дневна - исклучен сензор за бучава</summary>
+                <p>Правило: Сензорот треба да биде вклучен. Ако е исклучен, прикажи известување.</p>
+                <p>Сензорот моментално е исклучен.</p>
+            </details>
+
+            <details>
+                <summary>Кујна - зголемено ниво на чад</summary>
+                <p>Правило: Ако чадот е поголем од 10 ppm, прикажи предупредување.</p>
+                <p>Измерено: 15 ppm. Провери ја кујната.</p>
+            </details>
+
+            <details>
+                <summary>Кујна - висока температура</summary>
+                <p>Правило: Ако температурата е под 18°C или над 27°C, прикажи предупредување.</p>
+                <p>Измерено: 28°C.</p>
+            </details>
+
+            <details>
+                <summary>Градина - ниска влажност на почвата</summary>
+                <p>Правило: Ако влажноста е под 30% или над 70%, прикажи предупредување.</p>
+                <p>Измерено: 26%. Потребно е наводнување.</p>
+            </details>
+        </section>
+    </main>
+</body>
+</html>
