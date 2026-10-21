@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <title>Паметен дом - контролен панел</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f5f7;
+            color: #222;
+        }
+
+        header {
+            background-color: #23476a;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 { margin: 0 0 8px; }
+        header p { margin: 0; }
+
+        nav {
+            background-color: #173651;
+            padding: 14px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        nav a:hover { text-decoration: underline; }
+
+        main {
+            max-width: 1050px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        section { margin-bottom: 35px; }
+
+        h2 {
+            color: #23476a;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 7px;
+        }
+
+        .senzori {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        article {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 18px;
+        }
+
+        article h3 { margin-top: 0; }
+
+        .vrednost {
+            font-size: 22px;
+            color: #23476a;
+        }
+
+        meter, progress { width: 150px; height: 20px; }
+
+        .status { font-size: 14px; }
+        .on { color: green; font-weight: bold; }
+        .off { color: #b34227; font-weight: bold; }
+        .problem { color: #b12d2d; font-weight: bold; }
+        .normalno { color: #555; font-size: 14px; }
+
+        details {
+            background: white;
+            border: 1px solid #ddd;
+            border-left: 4px solid #c34b36;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            padding: 12px;
+        }
+
+        summary { cursor: pointer; font-weight: bold; }
+        footer { text-align: center; padding: 20px; color: #666; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Контролен панел за паметен дом</h1>
+        <p>Преглед на сензорите во домот</p>
+    </header>
+
+    <nav>
+        <a href="#spalna">Спална</a>
+        <a href="#dnevna">Дневна</a>
+        <a href="#kujna">Кујна</a>
+        <a href="#gradina">Градина</a>
+        <a href="#izvestuvanja">Известувања (6)</a>
+    </nav>
+
+    <main>
+        
+        <section id="spalna">
+            <h2>Спална соба</h2>
+            <div class="senzori">
+                <article id="spalna-temperatura">
+                    <h3>Сензор за температура</h3>
+                    <p>Температура: <data class="vrednost" value="19">19°C</data></p>
+                    <p class="normalno">Нормално: 20°C - 24°C</p>
+                    <p class="status">Статус: <span class="on">Вклучен</span> | Батерија: 86%</p>
+                    <p class="problem">Температурата е премногу ниска!</p>
+                </article>
+
+                <article id="spalna-vlaznost">
+                    <h3>Сензор за влажност</h3>
+                    <p>Влажност: <meter min="0" max="100" value="48">48%</meter> 48%</p>
+                    <p class="normalno">Нормално: 40% - 60%</p>
+                    <p class="status">Статус: <span class="on">Вклучен</span> | Батерија: 73%</p>
+                </article>
+
+                <article id="spalna-svetlina">
+                    <h3>Сензор за светлина</h3>
+                    <p>Светлина: <progress value="60" max="100">60%</progress> 60%</p>
+                    <p class="normalno">Нормално: 20% - 80%</p>
+                    <p class="status">Статус: <span class="on">Вклучен</span> | Батерија: 91%</p>
+                </article>
+            </div>
+        </section>
+
+        
+        <section id="dnevna">
+            <h2>Дневна соба</h2>
+            <div class="senzori">
+                <article id="dnevna-temperatura">
+                    <h3>Сензор за температура</h3>
+                    <p>Температура: <output class="vrednost">22°C</output></p>
+                    <p class="normalno">Нормално: 20°C - 24°C</p>
+                    <p class="status">Статус: <span class="on">Вклучен</span> | Батерија: 88%</p>
+                </article>
+
+                <article id="dnevna-co2">
+                    <h3>Сензор за CO₂</h3>
+                    <p>CO₂: <strong class="vrednost">1250 ppm</strong></p>
+                    <p class="normalno">Нормално: 400 - 1000 ppm</p>
+                    <p class="status">Статус: <span class="on">Вклучен</span> | Батерија: 65%</p>
+                    <p class="problem">Нивото на CO₂ е високо!</p>
+                </article>
+
+                <article id="dnevna-bucava">
+                    <h3>Сензор за бучава</h3>
+                    <p>Последно мерење: <span class="vrednost">40 dB</span></p>
+                    <p class="normalno">Нормално: 0 - 60 dB</p>
+                    <p class="status">Статус: <span class="off">Исклучен</span> | Батерија: 42%</p>
+                    <p class="problem">Сензорот е исклучен!</p>
+                </article>
+            </div>
+        </section>
+
+        
+        <section id="kujna">
+            <h2>Кујна</h2>
+            <div class="senzori">
+                <article id="kujna-cad">
+                    <h3>Сензор за чад</h3>
+                    <p>Чад: <mark class="vrednost">15 ppm</mark></p>
+                    <p class="normalno">Нормално: 0 - 10 ppm</p>
+                    <p class="status">Статус: <span class="on">Вклучен</span> | Батерија: 96%</p>
+                    <p class="problem">Зголемено ниво на чад!</p>
+                </article>
+
+                <article id="kujna-temperatura">
+                    <h3>Сензор за температура</h3>
+                    <p>Температура: <em class="vrednost">28°C</em></p>
+                    <p class="normalno">Нормално: 18°C - 27°C</p>
+                    <p class="status">Статус: <span class="on">Вклучен</span> | Батерија: 75%</p>
+                    <p class="problem">Температурата е висока!</p>
+                </article>
+
+                <article id="kujna-gas">
+                    <h3>Сензор за гас</h3>
+                    <p>Гас: <b class="vrednost">2%</b></p>
+                    <p class="normalno">Нормално: 0% - 5%</p>
+                    <p class="status">Статус: <span class="on">Вклучен</span> | Батерија: 83%</p>
+                </article>
+            </div>
+        </section>
+
+        
+        <section id="gradina">
+            <h2>Градина</h2>
+            <div class="senzori">
+                <article id="gradina-pochva">
+                    <h3>Сензор за влажност на почва</h3>
+                    <p>Влажност на почва:</p>
+                    <p class="vrednost">26%</p>
+                    <p class="normalno">Нормално: 30% - 70%</p>
+                    <p class="status">Статус: <span class="on">Вклучен</span> | Батерија: 59%</p>
+                    <p class="problem">Почвата е сува!</p>
+                </article>
+
+                <article id="gradina-temperatura">
+                    <h3>Сензор за надворешна температура</h3>
+                    <p>Температура: <small class="vrednost">18°C</small></p>
+                    <p class="normalno">Нормално: 10°C - 30°C</p>
+                    <p class="status">Статус: <span class="on">Вклучен</span> | Батерија: 77%</p>
+                </article>
+
+                <article id="gradina-svetlina">
+                    <h3>Сензор за осветленост</h3>
+                    <p>Осветленост: <samp class="vrednost">780 lx</samp></p>
+                    <p class="normalno">Нормално: 300 - 1200 lx</p>
+                    <p class="status">Статус: <span class="on">Вклучен</span> | Батерија: 82%</p>
+                </article>
+            </div>
+        </section>
+
+        
+        <section id="izvestuvanja">
+            <h2>Известувања и правила</h2>
+            <p>Вкупно 6 известувања</p>
+
+            <details open>
+                <summary>Спална - ниска температура</summary>
+                <p>Правило: Ако температурата е помала од 20°C или поголема од 24°C, прикажи предупредување.</p>
+                <p>Измерена температура: 19°C. Потребно е загревање на собата.</p>
+            </details>
+
+            <details>
+                <summary>Дневна - високо ниво на CO₂</summary>
+                <p>Правило: Ако CO₂ е под 400 ppm или над 1000 ppm, прикажи предупредување.</p>
+                <p>Измерено: 1250 ppm. Проветри ја дневната соба.</p>
+            </details>
+
+            <details>
+                <summary>Дневна - исклучен сензор за бучава</summary>
+                <p>Правило: Сензорот треба да биде вклучен. Ако е исклучен, прикажи известување.</p>
+                <p>Сензорот моментално е исклучен.</p>
+            </details>
+
+            <details>
+                <summary>Кујна - зголемено ниво на чад</summary>
+                <p>Правило: Ако чадот е поголем од 10 ppm, прикажи предупредување.</p>
+                <p>Измерено: 15 ppm. Провери ја кујната.</p>
+            </details>
+
+            <details>
+                <summary>Кујна - висока температура</summary>
+                <p>Правило: Ако температурата е под 18°C или над 27°C, прикажи предупредување.</p>
+                <p>Измерено: 28°C.</p>
+            </details>
+
+            <details>
+                <summary>Градина - ниска влажност на почвата</summary>
+                <p>Правило: Ако влажноста е под 30% или над 70%, прикажи предупредување.</p>
+                <p>Измерено: 26%. Потребно е наводнување.</p>
+            </details>
+        </section>
+    </main>
+
+    
+
+</body>
+</html>
