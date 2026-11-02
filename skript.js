@@ -1,4 +1,3 @@
-
 let vozaci = [];
 let krug = 0;
 
