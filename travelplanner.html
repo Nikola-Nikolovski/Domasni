@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Planner</title>
+  <link rel="stylesheet" href="assets/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Мени -->
+  <header class="bg-primary text-white py-3">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      <h3 class="my-0 mr-3">Travel Planner</h3>
+      <nav class="d-flex flex-wrap">
+        <a href="#pocetna" class="mr-3">Почетна</a>
+        <a href="#destinacii" class="mr-3">Дестинации</a>
+        <a href="#galerija" class="mr-3">Галерија</a>
+        <a href="#blog" class="mr-3">Блог</a>
+        <a href="#anketa">Анкета</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Почетна страна -->
+    <section id="pocetna" class="container py-5">
+      <div class="text-center mb-4">
+        <h1>Добредојдовте!</h1>
+      </div>
+
+      <div class="border rounded p-3 mb-4 bg-white">
+        <h4>Најава</h4>
+        <form id="loginForm" class="form-row">
+          <div class="col-md-4 mb-2"><input id="username" class="form-control" placeholder="Корисничко име" required></div>
+          <div class="col-md-4 mb-2"><input id="password" type="password" class="form-control" placeholder="Лозинка" required></div>
+          <div class="col-md-2 mb-2"><button class="btn btn-primary w-100">Најави се</button></div>
+          <div class="col-md-2 mb-2"><button type="button" id="logout" class="btn btn-outline-secondary w-100">Одјави се</button></div>
+        </form>
+        <p id="loginMessage" class="mt-2 mb-0 text-success"></p>
+      </div>
+
+      <h2>Популарни градови</h2>
+      <div id="homeCities" class="row"></div>
+    </section>
+
+    <!-- Дестинации -->
+    <section id="destinacii" class="container py-5">
+      <h2>Дестинации</h2>
+      <p>Избери категорија и максимален дневен буџет.</p>
+      <div class="form-row mb-3">
+        <div class="col-md-4 mb-2">
+          <select id="filterCategory" class="custom-select">
+            <option value="Сите">Сите категории</option>
+            <option>Култура</option>
+            <option>Историја</option>
+            <option>Одмор</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-2"><input id="filterBudget" type="number" min="0" class="form-control" placeholder="Буџет во € на ден"></div>
+        <div class="col-md-4 mb-2"><button id="resetFilters" class="btn btn-secondary w-100">Исчисти филтри</button></div>
+      </div>
+      <div id="cityList" class="row"></div>
+
+      <div class="border bg-white rounded p-3 my-4">
+        <h3>Додај дестинација</h3>
+        <form id="addForm" class="form-row">
+          <div class="col-md-3 mb-2"><input id="cityName" class="form-control" placeholder="Име на град" maxlength="50" required></div>
+          <div class="col-md-3 mb-2">
+            <select id="cityCategory" class="custom-select">
+              <option>Култура</option><option>Историја</option><option>Одмор</option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-2"><input id="cityPrice" class="form-control" type="number" min="1" placeholder="€ на ден" required></div>
+          <div class="col-md-3 mb-2"><input id="cityTransport" class="form-control" type="number" min="0" placeholder="Превоз € по лице" required></div>
+          <div class="col-md-9 mb-2"><input id="cityImage" class="form-control" type="url" placeholder="Линк за слика"></div>
+          <div class="col-md-3 mb-2"><button class="btn btn-success w-100">Додај</button></div>
+        </form>
+      </div>
+
+      <div class="border bg-white rounded p-3">
+        <h3>Пресметка на трошоци</h3>
+        <p class="small text-muted">Пресметка: (дневен трошок * денови + превоз) * лица.</p>
+        <div class="form-row">
+          <div class="col-md-4 mb-2"><select id="calcCity" class="custom-select"></select></div>
+          <div class="col-md-3 mb-2"><input id="calcDays" type="number" min="1" value="3" class="form-control" aria-label="Број на денови"></div>
+          <div class="col-md-3 mb-2"><input id="calcPeople" type="number" min="1" value="2" class="form-control" aria-label="Број на лица"></div>
+          <div class="col-md-2 mb-2"><button onclick="calculate()" class="btn btn-primary w-100">Пресметај</button></div>
+        </div>
+        <small class="text-muted">Полињата по ред се: дестинација, денови, лица.</small>
+        <p id="costResult" class="mt-3 font-weight-bold mb-0"></p>
+      </div>
+    </section>
+
+    <!-- Галерија -->
+    <section id="galerija" class="container py-5">
+      <h2>Галерија</h2>
+      <p>Отвори град за повеќе слики, Like/Dislike и коментари.</p>
+      <div id="galleryCities" class="row"></div>
+      <div id="galleryDetails" class="border rounded bg-white p-3 mt-3 d-none"></div>
+    </section>
+
+    <!-- Блог -->
+    <section id="blog" class="container py-5">
+      <h2>Блог – 10 работи што мора да ги видиш</h2>
+      <div id="blogCities" class="row"></div>
+      <div id="blogDetails" class="border rounded bg-white p-3 mt-3 d-none"></div>
+    </section>
+
+    <!-- Анкета -->
+    <section id="anketa" class="container py-5">
+      <h2>Анкета за посетителите</h2>
+      <form id="surveyForm" class="border bg-white rounded p-3">
+        <label for="surveyName">Име:</label>
+        <input id="surveyName" class="form-control mb-3" placeholder="Име" maxlength="50">
+
+        <label for="surveyRating">Оценка:</label>
+        <select id="surveyRating" class="custom-select mb-3" required>
+          <option value="">Избери оцена</option>
+          <option>Одлично</option><option>Добро</option><option>Може подобро</option>
+        </select>
+
+        <p class="mb-1">Дали би ја препорачал/а?</p>
+        <label class="mr-3"><input type="radio" name="recommend" value="Да" required> Да</label>
+        <label><input type="radio" name="recommend" value="Не"> Не</label>
+
+        <label class="mt-3" for="surveyText">Твој коментар:</label>
+        <textarea id="surveyText" class="form-control mb-3" rows="3" maxlength="500"></textarea>
+        <button class="btn btn-primary">Испрати</button>
+        <p id="surveyMessage" class="text-success mt-2 mb-0"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="bg-primary text-white text-center p-3 mt-4">
+    <p class="mb-0">Travel Planner</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+body {
+  background: #f1f5fa;
+  color: #222;
+  font-family: Arial, sans-serif;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+}
+
+header nav a:hover { text-decoration: underline; }
+
+section { scroll-margin-top: 15px; }
+
+h2 { margin-bottom: 20px; }
+
+.card img {
+  height: 180px;
+  object-fit: cover;
+}
+
+.gallery-photo {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.comment {
+  background: #f1f5fa;
+  padding: 8px;
+  margin-bottom: 6px;
+  border-radius: 5px;
+}
+
+button { cursor: pointer; }
